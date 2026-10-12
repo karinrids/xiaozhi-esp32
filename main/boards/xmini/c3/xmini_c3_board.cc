@@ -9,7 +9,7 @@
 #include "config.h"
 #include "power_save_timer.h"
 #include "press_to_talk_mcp_tool.h"
-
+#include "boards/common/adc_battery_monitor.h"
 #include <esp_log.h>
 #include <esp_efuse_table.h>
 #include <driver/i2c_master.h>
