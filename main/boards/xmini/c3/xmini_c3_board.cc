@@ -9,7 +9,7 @@
 #include "config.h"
 #include "power_save_timer.h"
 #include "press_to_talk_mcp_tool.h"
-#include "battery/adc_battery.h"
+
 #include <esp_log.h>
 #include <esp_efuse_table.h>
 #include <driver/i2c_master.h>
@@ -27,7 +27,7 @@ private:
     Button boot_button_;
     PowerSaveTimer* power_save_timer_ = nullptr;
     PressToTalkMcpTool* press_to_talk_tool_ = nullptr;
-    Battery* battery_ = nullptr;
+    
     void InitializePowerSaveTimer() {
         power_save_timer_ = new PowerSaveTimer(160, 300);
         power_save_timer_->OnEnterSleepMode([this]() {
@@ -176,9 +176,7 @@ public:
         InitializeButtons();
         InitializePowerSaveTimer();
         InitializeTools();
-        #ifdef BATTERY_ADC_PIN
-        battery_ = new AdcBattery(BATTERY_ADC_PIN);
-#endif
+       
         // 避免使用错误的固件，把 EFUSE 操作放在最后
         // 把 ESP32C3 的 VDD SPI 引脚作为普通 GPIO 口使用
         esp_efuse_write_field_bit(ESP_EFUSE_VDD_SPI_AS_GPIO);
