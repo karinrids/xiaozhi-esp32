@@ -197,8 +197,7 @@ public:
             AUDIO_CODEC_PA_PIN, AUDIO_CODEC_ES8311_ADDR);
         return &audio_codec;
     }
-virtual Battery* GetBattery() override {
-        return battery_;
+
     }
     virtual void SetPowerSaveLevel(PowerSaveLevel level) override {
         if (level != PowerSaveLevel::LOW_POWER) {
