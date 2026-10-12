@@ -22,10 +22,10 @@ jobs:
         shell: bash
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          python scripts/build.py xmini-c3
+          python scripts/build.py xmini_c3
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: xmini-c3-firmware
-          path: build/xmini-c3/*.bin
+          path: build/**/*.bin
